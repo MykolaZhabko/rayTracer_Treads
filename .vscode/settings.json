@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.js": "javascriptreact",
+    "*.ts": "typescriptreact",
+    "algorithm": "c",
+    "vector": "cpp",
+    "iosfwd": "cpp",
+    "iterator": "cpp",
+    "array": "c",
+    "string": "c",
+    "string_view": "c"
+  }
+}

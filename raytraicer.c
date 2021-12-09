@@ -8,6 +8,7 @@
 #include <math.h>
 #include <pthread.h> // For threads
 #include <semaphore.h>
+#include <unistd.h>
 
 #define min(a, b)(((a) < (b)) ? (a) : (b))
 
@@ -16,7 +17,7 @@ int pixels = 0;
 /* Width and height of out image */
 #define WIDTH 800
 #define HEIGHT 600
-#define THREADS_NUM 600 // have to be  HEIGHT % THREADS_NUM == 0
+#define THREADS_NUM 60  // have to be  HEIGHT % THREADS_NUM == 0
 
 pthread_mutex_t pixelcountMutex;
 
@@ -28,6 +29,7 @@ typedef struct{
   unsigned char img[3 * WIDTH * HEIGHT]; //will containe the raw image
 } imageData;
 
+//Type for threads
 typedef struct
 {
   unsigned char* img;
@@ -175,7 +177,6 @@ void* threadDuty(void* arg){
 
       } while ((coef > 0.0f) && (level < 15)); //level it is a number of reflections of one ray
 
-      
       threadData->img[(x + y * WIDTH) * 3 + 0] = (unsigned char) min(red * 255.0f, 255.0f);
       threadData->img[(x + y * WIDTH) * 3 + 1] = (unsigned char) min(green * 255.0f, 255.0f);
       threadData->img[(x + y * WIDTH) * 3 + 2] = (unsigned char) min(blue * 255.0f, 255.0f);

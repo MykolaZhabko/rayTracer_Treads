@@ -1,5 +1,5 @@
 output: raytraicer.o vector_math.o file_operation.o
-	gcc raytraicer.c vector_math.c file_operation.c -lm -o output
+	gcc raytraicer.c vector_math.c file_operation.c -lm -lpthread -o output
 
 raytraicer.o: raytraicer.c
 	gcc -c raytraicer.c
